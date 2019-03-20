@@ -1,5 +1,5 @@
 export default function ({ store, redirect }) {
-  if (store.state.authorisation.user !== null) {
+  if (store.state.authorisation.isAuthenticated) {
     return redirect('/')
   }
 }

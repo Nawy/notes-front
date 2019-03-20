@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <h1>Hello {{user.username}}!</h1>
+    <h1>Hello <span v-if="user !== null">{{user.username}}!</span></h1>
   </div>
 </template>
 

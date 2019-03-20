@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <CreateUserForm v-if="false" />
-    <LoginForm v-if="isUserEmpty" />
-    <UserInfo v-if="isUserEmpty === false" />
+    <LoginForm v-if="isAuthenticated === false" />
+    <UserInfo v-if="isAuthenticated" />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     UserInfo
   },
   computed: mapState({
-    isUserEmpty: state => state.authorisation.user == null
+    isAuthenticated: state => state.authorisation.isAuthenticated
   }),
   middleware: 'authenticated'
 }

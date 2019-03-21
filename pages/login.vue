@@ -19,9 +19,9 @@ export default {
     UserInfo
   },
   computed: mapState({
-    isAuthenticated: state => state.authorisation.isAuthenticated
+    isAuthenticated: state => state.user.isAuthenticated
   }),
-  middleware: 'authenticated'
+  middleware: ['checkAuth', 'alreadyAuth']
 }
 </script>
 

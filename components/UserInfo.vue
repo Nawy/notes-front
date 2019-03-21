@@ -10,7 +10,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'UserInfo',
   computed: mapState({
-    user: state => state.authorisation.user
+    user: state => state.user.data
   })
 }
 </script>

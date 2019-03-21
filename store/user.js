@@ -2,20 +2,20 @@ import querystring from 'querystring'
 
 const state = function () {
   return {
-    user: null,
+    data: null,
     isAuthenticated: false
   }
 }
 
 const mutations = {
   setUser(state, user) {
-    state.user = user
+    state.data = user
   },
   authenticate(state, authState) {
     state.isAuthenticated = authState
   },
   logout(state) {
-    state.user = false
+    state.data = false
     state.isAuthenticated = false
   }
 }
@@ -39,9 +39,15 @@ const actions = {
       const userResponse = await this.$axios.get(
         `/api/users/${credentials.username}`
       )
-      console.info("User: {}", userResponse.data) // eslint-disable-line
       store.commit('setUser', userResponse.data)
+      credentials.callback()
     }
+  },
+  async loadUser(store) {
+    const userResponse = await this.$axios.get(
+      `/api/users`
+    )
+    store.commit('setUser', userResponse.data)
   }
 }
 

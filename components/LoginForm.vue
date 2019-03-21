@@ -23,6 +23,9 @@
     <button class="btn btn-primary" @click="login({username, password}, $event)">
       Let's go!
     </button>
+    <button class="btn btn-primary" @click="routeToPanel($event)">
+      Panel
+    </button>
   </form>
 </template>
 
@@ -38,12 +41,16 @@ export default {
     }
   },
   computed: mapState({
-    user: state => state.authorisation.user
+    user: state => state.user.data
   }),
   methods: {
     login(credentials, event) {
       event.preventDefault()
-      this.$store.dispatch('authorisation/login', credentials)
+      this.$store.dispatch('user/login', credentials)
+    },
+    routeToPanel(event) {
+      event.preventDefault()
+      this.$router.push(`/panel`)
     }
   }
 }
